@@ -1,0 +1,297 @@
+/* ==========================================================================
+   IntelliGenesis LLC — theme
+   Built on UIkit 3 (MIT licence). Every colour, font size, line height and
+   section padding below was measured off the existing site so the rebuild
+   lands on the same pixels.
+   ========================================================================== */
+
+:root{
+  --ig-navy:      #12304c;   /* primary section background        */
+  --ig-heading:   #000e3f;   /* hero h1                           */
+  --ig-blue:      #478dbc;   /* nav, links, accents               */
+  --ig-body:      #696969;   /* body copy                         */
+  --ig-soft:      rgba(255,255,255,.7);
+}
+
+/* ---------- base ---------- */
+
+html{ -webkit-text-size-adjust:100%; }
+
+body{
+  font-family:'Roboto',sans-serif;
+  font-size:15px;
+  font-weight:300;
+  line-height:24px;
+  color:var(--ig-body);
+  background:#fff;
+}
+
+a{ color:var(--ig-blue); text-decoration:none; }
+a:hover{ color:var(--ig-blue); text-decoration:underline; }
+
+p{ margin:0 0 20px; }
+p:last-child{ margin-bottom:0; }
+
+/* ---------- headings ---------- */
+
+h1,.uk-h1{
+  font-family:'Roboto',sans-serif;
+  font-size:48px; line-height:67.2px; font-weight:700;
+  color:var(--ig-heading);
+  margin:0 0 20px;
+}
+h2,.uk-h2{
+  font-family:'Roboto',sans-serif;
+  font-size:30px; line-height:39px; font-weight:300;
+  color:var(--ig-navy);
+  margin:0 0 20px;
+}
+h3,.uk-h3{
+  font-family:'Roboto',sans-serif;
+  font-size:22px; line-height:30.8px; font-weight:300;
+  color:var(--ig-navy);
+  margin:0 0 20px;
+}
+h4,.uk-h4{ font-size:18px; line-height:25.2px; font-weight:300; }
+h5,.uk-h5{
+  font-family:'Work Sans',sans-serif;
+  font-size:12px; line-height:16.8px; font-weight:500;
+  letter-spacing:1px; text-transform:uppercase;
+  margin:0 0 20px;
+}
+
+/* Navy bands invert all type to white */
+.uk-section-primary{ background:var(--ig-navy); color:var(--ig-soft); }
+.uk-section-primary h1,.uk-section-primary h2,.uk-section-primary h3,
+.uk-section-primary h4,.uk-section-primary h5,
+.uk-section-primary .uk-h1,.uk-section-primary .uk-h2,
+.uk-section-primary .uk-h5{ color:#fff; }
+.uk-section-primary a{ color:#fff; }
+
+.uk-section-default{ background:#fff; }
+
+/* ---------- section padding modifiers ----------
+   Stock UIkit only ships uk-section-{xsmall,small,large} which set BOTH
+   top and bottom. The source site uses one-sided variants, so they are
+   defined here to the same scale.                                        */
+
+.uk-section-xsmall-top{    padding-top:20px; }
+.uk-section-xsmall-bottom{ padding-bottom:20px; }
+.uk-section-small-top{     padding-top:40px; }
+.uk-section-small-bottom{  padding-bottom:40px; }
+.uk-section-medium-top{    padding-top:40px; }
+.uk-section-medium-bottom{ padding-bottom:40px; }
+.uk-section-large-top{     padding-top:70px; }
+.uk-section-large-bottom{  padding-bottom:70px; }
+
+@media (min-width:960px){
+  .uk-section-medium-top{    padding-top:70px; }
+  .uk-section-medium-bottom{ padding-bottom:70px; }
+  .uk-section-large-top{     padding-top:140px; }
+  .uk-section-large-bottom{  padding-bottom:140px; }
+}
+
+/* ---------- header ---------- */
+
+.tm-header{ background:#fff; position:relative; z-index:980; }
+.tm-header .uk-navbar-container{ background:transparent; }
+.tm-header .uk-navbar{ min-height:80px; }
+.tm-header .uk-navbar-right,
+.tm-header .uk-navbar-nav{ flex-wrap:nowrap; gap:0; column-gap:0; }
+
+.tm-logo img{ width:272px; height:auto; display:block; }
+
+.uk-navbar-nav > li > a{
+  font-family:'Work Sans',sans-serif;
+  font-size:12px; font-weight:500;
+  letter-spacing:1px; text-transform:uppercase;
+  color:var(--ig-blue);
+  min-height:80px;
+  padding:0 15px;
+  white-space:nowrap;
+  transition:color .1s ease-in-out;
+}
+.uk-navbar-nav > li > a sup{ font-size:75%; line-height:0; vertical-align:super; }
+.uk-navbar-nav > li > a:hover,
+.uk-navbar-nav > li.uk-active > a{ color:var(--ig-navy); text-decoration:none; }
+
+.tm-search-toggle{ color:var(--ig-body); margin-left:14px; }
+.tm-search-toggle:hover{ color:var(--ig-navy); }
+
+.tm-header-mobile .uk-navbar{ min-height:64px; }
+.tm-header-mobile .tm-logo img{ width:280px; }
+.uk-navbar-toggle{ color:var(--ig-navy); }
+
+/* ---------- buttons ---------- */
+
+.uk-button{
+  font-family:'Work Sans',sans-serif;
+  font-size:11px; font-weight:500;
+  letter-spacing:1px; text-transform:uppercase;
+  line-height:38px;
+  padding:0 30px;
+  border-radius:500px;
+  border:1px solid transparent;
+  transition:background-color .1s ease-in-out,color .1s ease-in-out;
+}
+.uk-button-primary{ background:var(--ig-navy); color:#fff; }
+.uk-button-primary:hover,
+.uk-button-primary:focus{ background:var(--ig-blue); color:#fff; text-decoration:none; }
+
+/* UIkit's own inverse styles repaint primary buttons white inside a
+   .uk-section-primary. The source does NOT do that, so override it back. */
+.uk-section-primary:not(.uk-preserve-color) .uk-button-primary,
+.uk-card-primary.uk-card-body .uk-button-primary{
+  background-color:var(--ig-navy);
+  color:#fff;
+}
+.uk-section-primary:not(.uk-preserve-color) .uk-button-primary:hover,
+.uk-section-primary:not(.uk-preserve-color) .uk-button-primary:focus{
+  background-color:var(--ig-blue);
+  color:#fff;
+}
+
+ /* NOTE: the source keeps uk-button-primary navy everywhere, including on
+   navy sections — so the footer "Employee Portal" pill reads as plain white
+   text on navy. Reproduced as-is; see the handover notes. */
+
+/* ---------- slideshow ---------- */
+
+.tm-slideshow .uk-dotnav > * > *{ border-color:rgba(255,255,255,.7); width:10px; height:10px; }
+.tm-slideshow .uk-dotnav > .uk-active > *{ background:#fff; border-color:#fff; }
+.tm-slideshow .uk-slidenav{ color:rgba(255,255,255,.85); }
+.tm-slideshow .uk-slidenav:hover{ color:#fff; }
+
+/* ---------- hero ---------- */
+
+.tm-hero-lead{
+  font-size:24px; line-height:36px; font-weight:700;
+  color:var(--ig-heading);
+}
+
+/* ---------- full-width band headings ----------
+   On the source these are a <p> nested inside a heading tag with inline
+   styles. Reproduced here as classes so the markup stays clean.          */
+
+.tm-band-title{                       /* "Advanced Solutions for Every Mission." */
+  font-size:36px; line-height:50px; font-weight:700;
+  color:#fff; text-align:center;
+  margin:0 0 20px;
+}
+.tm-band-title:last-child{ margin-bottom:20px; }
+.tm-lead-title{                       /* "Your strategic partner in modern…"     */
+  font-size:30px; line-height:39px; font-weight:700;
+  color:var(--ig-navy); text-align:center;
+  margin:0 0 20px;
+}
+.tm-lead-title:last-child{ margin-bottom:20px; }
+
+/* ---------- cards ---------- */
+
+.uk-card-default{ background:#fff; color:var(--ig-heading); box-shadow:none; border-radius:0; }
+.uk-card-body{ padding:40px; }
+
+/* Card type is dark navy, and must beat the .uk-section-primary white rule */
+.uk-card-default .uk-card-title,
+.uk-section-primary .uk-card-default .uk-card-title,
+.uk-section-primary .uk-card-default h3{
+  font-size:22px; line-height:30.8px; font-weight:300;
+  color:var(--ig-heading);
+  margin:40px 0 20px;
+}
+.uk-card-default p,
+.uk-section-primary .uk-card-default p{
+  font-size:15px; line-height:24px;
+  color:var(--ig-heading);
+}
+
+.tm-card-logo{
+  display:block;
+  width:100%;
+  height:72px;
+  object-fit:contain;
+  object-position:center;
+}
+
+/* ---------- bullet list ---------- */
+
+.tm-bullets{ padding-left:30px; margin:0; list-style:disc; }
+.tm-bullets li{ margin:0; font-size:15px; line-height:24px; }
+.tm-bullets li + li{ margin-top:20px; }
+
+/* ---------- services / technologies band ---------- */
+
+.tm-col-title{
+  font-size:28px; line-height:42px; font-weight:900;
+  color:#fff; margin:0 0 20px;
+}
+.tm-linklist{ list-style:none; margin:0; padding:0; }
+.tm-linklist li{ margin:0; }
+.tm-linklist li + li{ margin-top:10px; }
+.tm-linklist a{
+  display:block;
+  font-size:18px; line-height:29px; font-weight:400;
+  color:#fff;
+}
+.tm-linklist a:hover{ color:var(--ig-blue); text-decoration:none; }
+
+/* the source indents these two columns inwards from the divider */
+.tm-indent-lg{ padding-left:160px; }
+.tm-indent-sm{ padding-left:30px; }
+
+/* ---------- blockquote ---------- */
+
+blockquote{
+  font-size:18px; line-height:27px;
+  font-weight:300; font-style:italic;
+  color:var(--ig-blue);
+  border-left:2px solid var(--ig-navy);
+  padding-left:40px;
+  margin:0;
+}
+
+/* ---------- certifications ---------- */
+
+.tm-certs{ margin-bottom:20px; }
+.tm-certs img{ max-width:600px; width:100%; height:auto; }
+.tm-idline{ font-size:15px; color:var(--ig-body); margin:0; }
+.tm-idline strong{ color:var(--ig-navy); font-weight:500; }
+
+/* ---------- footer ---------- */
+
+.tm-footer{
+  background:var(--ig-navy);
+  color:var(--ig-soft);
+  font-size:12px;
+  line-height:16.8px;
+}
+.tm-footer p{ margin:0 0 20px; }
+.tm-footer p:last-child{ margin-bottom:0; }
+.tm-footer a{ color:var(--ig-soft); }
+.tm-footer a:hover{ color:#fff; text-decoration:none; }
+.tm-footer .tm-office-name{ color:#fff; font-weight:400; }
+
+.tm-subfooter{
+  background:#fff;
+  font-size:12px;
+  line-height:17px;
+  color:var(--ig-blue);
+}
+.tm-subfooter p{ margin:0; }
+.tm-subfooter a{ color:var(--ig-blue); }
+.tm-subfooter a:hover{ color:var(--ig-navy); }
+
+/* ---------- responsive ----------
+   The source keeps the hero h1 and lead at full size on phones; only the two
+   full-width band headings scale down. Matched exactly rather than guessed. */
+
+@media (max-width:959px){
+  .tm-band-title{ font-size:34px;   line-height:47.6px; }
+  .tm-lead-title{ font-size:25.5px; line-height:33.15px; }
+  .tm-indent-lg,.tm-indent-sm{ padding-left:0; }
+  .tm-divider{ border-left:0; }
+}
+
+@media (max-width:639px){
+  .uk-card-body{ padding:30px; }
+}
