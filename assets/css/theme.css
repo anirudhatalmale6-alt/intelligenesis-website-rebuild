@@ -10,7 +10,7 @@
   --ig-heading:   #000e3f;   /* hero h1                           */
   --ig-blue:      #478dbc;   /* nav, links, accents               */
   --ig-body:      #696969;   /* body copy                         */
-  --ig-soft:      rgba(255,255,255,.7);
+  --ig-soft:      #ffffff;
 }
 
 /* ---------- base ---------- */
@@ -67,6 +67,13 @@ h5,.uk-h5{
 .uk-section-primary .uk-h1,.uk-section-primary .uk-h2,
 .uk-section-primary .uk-h5{ color:#fff; }
 .uk-section-primary a{ color:#fff; }
+
+/* UIkit's inverse component sets body copy on dark sections to 70% white.
+   The source uses solid white, so match its specificity and override. */
+.uk-section-primary:not(.uk-preserve-color),
+.uk-section-primary:not(.uk-preserve-color) p,
+.uk-section-primary:not(.uk-preserve-color) li,
+.uk-section-primary:not(.uk-preserve-color) .uk-accordion-title{ color:#fff; }
 
 .uk-section-default{ background:#fff; }
 
@@ -280,11 +287,89 @@ blockquote{
 .tm-subfooter a{ color:var(--ig-blue); }
 .tm-subfooter a:hover{ color:var(--ig-navy); }
 
+/* ---------- interior page title band ----------
+   e.g. "About Us" — 72px, weight 900, two-tone (navy word + blue word).   */
+
+.tm-page-title{
+  font-size:72px; line-height:79.2px; font-weight:900;
+  text-align:center; margin:0 0 20px;
+  padding-bottom:14px;
+  border-bottom:4px solid #e9e9e9;   /* the source's uk-heading-divider */
+  color:var(--ig-blue);
+}
+.tm-page-title:last-child{ margin-bottom:20px; }
+.tm-page-title .tm-navy{ color:var(--ig-navy); }
+
+/* ---------- interior section headings ----------
+   The source marks these up as <strong> inside a <p>, not as h2/h3.       */
+
+.tm-section-title{                 /* 40px block heading */
+  font-size:40px; line-height:56px; font-weight:400;
+  color:var(--ig-navy); margin:0 0 20px;
+}
+.uk-section-primary .tm-section-title{ color:#fff; }
+.tm-section-title strong{ font-weight:400; }   /* the source keeps these light */
+.tm-sub-title,
+.tm-sub-title strong{ font-weight:400; }
+
+.tm-sub-title{                     /* 18px blue sub-heading */
+  font-size:18px; line-height:25.2px; font-weight:400;
+  color:var(--ig-blue); margin:0;
+  display:inline;
+}
+.uk-section-primary .tm-sub-title{ color:#fff; }
+
+.tm-caption{                       /* 12px image caption */
+  font-size:12px; line-height:16.8px; font-weight:300;
+  text-align:center; margin:20px 0 0;
+}
+
+.tm-text-small{                    /* 14px body used in the perks grid */
+  font-size:14px; line-height:22.4px; font-weight:300;
+  color:var(--ig-heading);
+}
+
+/* ---------- accordion ---------- */
+
+.tm-accordion{ margin:0; padding:0; list-style:none; }
+.tm-accordion .uk-accordion-title{
+  font-size:18px; line-height:25.2px; font-weight:300;
+  color:#fff;
+}
+.tm-accordion .uk-accordion-title::before{
+  margin-left:12px;
+  filter:brightness(0) invert(1);
+}
+.tm-accordion .uk-accordion-content{ margin-top:20px; }
+.uk-section-primary .tm-accordion p,
+.uk-section-primary .tm-accordion li{ color:#fff; }
+
+/* ---------- perks grid on About Us ---------- */
+
+.tm-perk img{ width:100%; height:auto; aspect-ratio:293/195; object-fit:cover; display:block; }
+
+/* the perks grid uses a 10px gutter, not UIkit's default 40px —
+   that is what makes each tile 293px wide at 1280 and 175px on a phone. */
+.tm-grid-xsmall{ margin-left:-10px; }
+.tm-grid-xsmall > *{ padding-left:10px; }
+.tm-grid-xsmall > .uk-grid-margin{ margin-top:40px; }   /* columns 10px; rows 40px, 70px on desktop */
+
+/* the source titles each perk with UIkit's bullet heading */
+.tm-perk .uk-heading-bullet{
+  font-size:18px; line-height:25.2px; font-weight:300;
+  color:var(--ig-blue);
+  margin:20px 0 0;
+}
+.tm-perk .uk-heading-bullet strong{ font-weight:300; }
+.uk-heading-bullet::before{ border-left:6px solid #e9e9e9; }
+.tm-perk p{ margin:0; }
+
 /* ---------- responsive ----------
    The source keeps the hero h1 and lead at full size on phones; only the two
    full-width band headings scale down. Matched exactly rather than guessed. */
 
 @media (max-width:959px){
+  .tm-page-title{ font-size:56.95px; line-height:62.6px; }
   .tm-band-title{ font-size:34px;   line-height:47.6px; }
   .tm-lead-title{ font-size:25.5px; line-height:33.15px; }
   .tm-indent-lg,.tm-indent-sm{ padding-left:0; }
@@ -293,4 +378,9 @@ blockquote{
 
 @media (max-width:639px){
   .uk-card-body{ padding:30px; }
+}
+
+/* must come after the .tm-grid-xsmall base rule to win at equal specificity */
+@media (min-width:960px){
+  .tm-grid-xsmall > .uk-grid-margin{ margin-top:70px; }
 }

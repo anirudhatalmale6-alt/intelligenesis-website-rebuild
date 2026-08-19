@@ -45,9 +45,22 @@ Mobile (390px): 5135px vs 5157px, no horizontal overflow.
 Fonts are self-hosted (no Google Fonts call), images kept in their original
 AVIF/WebP formats.
 
+## Pages built
+
+| Page | Original | Rebuild | Diff |
+|------|---------:|--------:|-----:|
+| Homepage | 3515px | 3513px | -2 |
+| About Us | 3176px | 3176px | **0** |
+
+Every individual section on About Us matches to the pixel.
+Mobile (390px): homepage 5135 vs 5157, About Us 4814 vs 4838. No horizontal scroll.
+
 ## Layout
 
 ```
+build.py                regenerates the pages from src/
+src/base.html           shared <head>, header, footer
+src/pages/*.html        per-page <main> content
 index.html              homepage
 assets/css/uikit.min.css    UIkit 3.21.16 (MIT)
 assets/css/fonts.css        @font-face for the two self-hosted families
