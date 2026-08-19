@@ -111,11 +111,10 @@ h5,.uk-h5{
   white-space:nowrap;
   transition:color .1s ease-in-out;
 }
-.uk-navbar-nav > li > a sup{ font-size:75%; line-height:0; vertical-align:super; }
 .uk-navbar-nav > li > a:hover,
 .uk-navbar-nav > li.uk-active > a{ color:var(--ig-navy); text-decoration:none; }
 
-.tm-search-toggle{ color:var(--ig-body); margin-left:14px; }
+.tm-search-toggle{ color:var(--ig-body); margin-left:46px; }
 .tm-search-toggle:hover{ color:var(--ig-navy); }
 
 .tm-header-mobile .uk-navbar{ min-height:64px; }
